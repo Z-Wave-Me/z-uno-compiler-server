@@ -7,6 +7,4 @@ ${BUILD_DIR}/zme_make/zme_make build /sketch/tmp/tmp.ino \
 	-T $(find ${BUILD_DIR} -maxdepth 2 -name bin) \
 	-lc $(find ${BUILD_DIR} -name libclang.so -exec dirname {} \;) \
 	-B /sketch/ \
-	-O make_listing \
-	-O BO:-DARDUINO=152 \
-	-O BO:-DARDUINO_ARCH_ZUNOG2
+	-O make_listing
