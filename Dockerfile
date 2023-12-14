@@ -10,7 +10,7 @@ ENV TOOL_ARCH="x86_64-pc-linux-gnu"
 ENV BUILD_DIR="/build"
 
 # Install and download
-RUN apt-get update && apt-get install -y make unzip wget jq && \
+RUN apt-get update && apt-get install -y make unzip wget jq libncurses5 && \
     mkdir ${BUILD_DIR} && \
     TMP_DIR=$(mktemp -d) && cd ${TMP_DIR} && \
     echo "Downloading Package JSON" && wget -q ${PACKAGE_JSON} -O package.json && \
@@ -26,3 +26,5 @@ RUN apt-get update && apt-get install -y make unzip wget jq && \
 
 # Copy scripts
 COPY compile.sh ${BUILD_DIR}/compile.sh
+COPY bootloader.sh ${BUILD_DIR}/bootloader.sh
+COPY bootloaders.sh ${BUILD_DIR}/bootloaders.sh
