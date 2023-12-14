@@ -11,7 +11,7 @@ ${BUILD_DIR}/zme_make/zme_make build /sketch/tmp/tmp.ino \
 	-lc $(find ${BUILD_DIR} -name libclang.so -exec dirname {} \;) \
 	-B /sketch/ \
 	-O make_listing \
-	-O "BO:-DZUNO_SKETCH_NAME=\"${NAME}\"" \
+	-O "BO:-DZUNO_SKETCH_NAME=\'${NAME}\'" \
 	-C "${CHIP}" > /sketch/tmp/log.txt
 
 echo $? > /sketch/tmp/status.txt
