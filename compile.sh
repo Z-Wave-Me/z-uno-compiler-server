@@ -1,7 +1,8 @@
 #!/bin/bash
 
 CHIP=$1
-NAME=$2
+PINS=$2
+NAME=$3
 
 ${BUILD_DIR}/zme_make/zme_make build /sketch/tmp/tmp.ino \
 	-S $(find ${BUILD_DIR} -name cores) \
@@ -11,7 +12,8 @@ ${BUILD_DIR}/zme_make/zme_make build /sketch/tmp/tmp.ino \
 	-lc $(find ${BUILD_DIR} -name libclang.so -exec dirname {} \;) \
 	-B /sketch/ \
 	-O make_listing \
-	-O "BO:-DZUNO_SKETCH_NAME=\'${NAME}\'" \
+	-O "BO:-DZUNO_SKETCH_NAME=\"${NAME}\"" \
+	-O "BO:-DZUNO_PIN_V=0x${PINS}" \
 	-C "${CHIP}" > /sketch/tmp/log.txt
 
 echo $? > /sketch/tmp/status.txt
